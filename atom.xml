@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://cutestalpaca.github.io</id>
     <title>alpaca的小站</title>
-    <updated>2020-10-17T02:28:32.722Z</updated>
+    <updated>2020-10-17T02:33:54.895Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://cutestalpaca.github.io"/>
     <link rel="self" href="https://cutestalpaca.github.io/atom.xml"/>
@@ -15,7 +15,7 @@
         <id>https://cutestalpaca.github.io/post/docker-xue-xi-bi-ji/</id>
         <link href="https://cutestalpaca.github.io/post/docker-xue-xi-bi-ji/">
         </link>
-        <updated>2020-10-16T15:49:33.000Z</updated>
+        <updated>2020-09-10T15:49:33.000Z</updated>
         <content type="html"><![CDATA[<!-- more -->
 <h3 id=""></h3>
 <h2 id="docker解决的问题"><strong>Docker解决的问题:</strong></h2>
@@ -234,8 +234,10 @@ docker attach 55321bcae33d
   version     Show the Docker version information
   wait        Block until one or more containers stop, then print their exit codes
 </code></pre>
-<p><a href="www.baidu.com">弱小和无知不是生存的障碍傲慢才是</a><br>
-[狂神:只要学不死,就往死里学]</p>
+<p><a href="www.baidu.com">弱小和无知不是生存的障碍傲慢才是</a></p>
+<!-- more -->
+<!-- more -->
+<p>[狂神:只要学不死,就往死里学]😀</p>
 ]]></content>
     </entry>
     <entry>
@@ -243,7 +245,7 @@ docker attach 55321bcae33d
         <id>https://cutestalpaca.github.io/post/idea/</id>
         <link href="https://cutestalpaca.github.io/post/idea/">
         </link>
-        <updated>2020-09-23T09:01:46.000Z</updated>
+        <updated>2019-09-17T09:01:46.000Z</updated>
         <content type="html"><![CDATA[<!-- more -->
 <p>首先执行启动脚本, 然后打开设置搜索Desktop,可以看到KeyMap中的Create Desktop没有绑定快捷键,给他绑定一个快捷键保存，按一下快捷键。直接就可以创建了。退出后，就可以在软件列表中看到.</p>
 ]]></content>
