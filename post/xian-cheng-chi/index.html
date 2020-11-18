@@ -1,0 +1,209 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>线程池 | alpaca的小站</title>
+<link rel="shortcut icon" href="https://cutestalpaca.github.io/favicon.ico?v=1605690318738">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cutestalpaca.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="线程池 | alpaca的小站 - Atom Feed" href="https://cutestalpaca.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="
+什么是线程池
+线程池就是首先创建一些线程，它们的集合称为线程池。使用线程池可以很好地提高性能，线程池在系统启动时即创建大量空闲的线程，程序将一个任务传给线程池，线程池就会启动一条线程来执行这个任务，执行结束以后，该线程并不会死亡，而是再次..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://cutestalpaca.github.io">
+  <img class="avatar" src="https://cutestalpaca.github.io/images/avatar.png?v=1605690318738" alt="">
+  </a>
+  <h1 class="site-title">
+    alpaca的小站
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              线程池
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-10-02
+              </span>
+              <span>
+                2 min read
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <!-- more -->
+<h2 id="什么是线程池">什么是线程池</h2>
+<p>线程池就是首先创建一些线程，它们的集合称为线程池。使用线程池可以很好地提高性能，线程池在系统启动时即创建大量空闲的线程，程序将一个任务传给线程池，线程池就会启动一条线程来执行这个任务，执行结束以后，该线程并不会死亡，而是再次返回线程池中成为空闲状态，等待执行下一个任务。</p>
+<h3 id="线程池的工作机制">线程池的工作机制</h3>
+<p>1 .在线程池的编程模式下，任务是提交给整个线程池，而不是直接提交给某个线程，线程池在拿到任务后，就在内部寻找是否有空闲的线程，如果有，则将任务交给某个空闲的线程。</p>
+<p>2.一个线程同时只能执行一个任务，但可以同时向一个线程池提交多个任务。<br>
+线程池就是管理线程的池子，当有任务要处理时，不用频繁创建新线程，而是从池子里拿个线程出来处理。当任务执行完，线程并不会被销毁，而是再等待下一个任务。因此可以节省资源，提高响应速度。</p>
+<!-- more -->
+<h2 id="核心线程与非核心线程">核心线程与非核心线程</h2>
+<p>线程池新建线程的时候，如果当前线程总数小于线程池数量，则新建的是核心线程，如果超过线程池，则新建的是非核心线程</p>
+<!-- more -->
+<h2 id="阻塞队列">阻塞队列</h2>
+<p>WorkQueue</p>
+<h2 id="空闲存活时间">空闲存活时间</h2>
+<p>核心线程默认情况下会一直存活在线程池中，即使这个核心线程处于闲置状态。如果指定线程池允许的线程时间，那么核心线程处于闲置状态的话，超过一定时间（自己设置的时间），就会被销毁掉。</p>
+<!-- more -->
+<h2 id="饱和策略">饱和策略</h2>
+<p>线城池的饱和策略事件，主要有四种类型：</p>
+<ul>
+<li>AbortPolicy（抛出一个异常，默认的）</li>
+<li>DiscardPolicy（新提交的任务直接被抛弃）</li>
+<li>DiscardOldestPolicy（丢弃队列里最老的任务，将当前这个任务继续提交给线程池</li>
+<li>CallerRunsPolicy（交给线程池调用所在的线程进行处理，即将某些任务回退到调用者）</li>
+</ul>
+<!-- more -->
+<h2 id="流程图">流程图</h2>
+<figure data-type="image" tabindex="1"><img src="https://cutestalpaca.github.io/post-images/1605690233971.png" alt="" loading="lazy"></figure>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%BA%BF%E7%A8%8B%E6%B1%A0">什么是线程池</a>
+<ul>
+<li><a href="#%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%9C%BA%E5%88%B6">线程池的工作机制</a></li>
+</ul>
+</li>
+<li><a href="#%E6%A0%B8%E5%BF%83%E7%BA%BF%E7%A8%8B%E4%B8%8E%E9%9D%9E%E6%A0%B8%E5%BF%83%E7%BA%BF%E7%A8%8B">核心线程与非核心线程</a></li>
+<li><a href="#%E9%98%BB%E5%A1%9E%E9%98%9F%E5%88%97">阻塞队列</a></li>
+<li><a href="#%E7%A9%BA%E9%97%B2%E5%AD%98%E6%B4%BB%E6%97%B6%E9%97%B4">空闲存活时间</a></li>
+<li><a href="#%E9%A5%B1%E5%92%8C%E7%AD%96%E7%95%A5">饱和策略</a></li>
+<li><a href="#%E6%B5%81%E7%A8%8B%E5%9B%BE">流程图</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://cutestalpaca.github.io/post/docker-xue-xi-bi-ji/">
+              <h3 class="post-title">
+                Docker学习笔记
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com" target="_blank">Alpaca</a>
+  <a class="rss" href="https://cutestalpaca.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

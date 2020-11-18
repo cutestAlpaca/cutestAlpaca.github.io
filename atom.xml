@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://cutestalpaca.github.io</id>
     <title>alpaca的小站</title>
-    <updated>2020-10-17T02:36:53.417Z</updated>
+    <updated>2020-11-18T09:05:22.751Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://cutestalpaca.github.io"/>
     <link rel="self" href="https://cutestalpaca.github.io/atom.xml"/>
@@ -10,6 +10,41 @@
     <logo>https://cutestalpaca.github.io/images/avatar.png</logo>
     <icon>https://cutestalpaca.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, alpaca的小站</rights>
+    <entry>
+        <title type="html"><![CDATA[线程池]]></title>
+        <id>https://cutestalpaca.github.io/post/xian-cheng-chi/</id>
+        <link href="https://cutestalpaca.github.io/post/xian-cheng-chi/">
+        </link>
+        <updated>2020-10-02T09:02:31.000Z</updated>
+        <content type="html"><![CDATA[<!-- more -->
+<h2 id="什么是线程池">什么是线程池</h2>
+<p>线程池就是首先创建一些线程，它们的集合称为线程池。使用线程池可以很好地提高性能，线程池在系统启动时即创建大量空闲的线程，程序将一个任务传给线程池，线程池就会启动一条线程来执行这个任务，执行结束以后，该线程并不会死亡，而是再次返回线程池中成为空闲状态，等待执行下一个任务。</p>
+<h3 id="线程池的工作机制">线程池的工作机制</h3>
+<p>1 .在线程池的编程模式下，任务是提交给整个线程池，而不是直接提交给某个线程，线程池在拿到任务后，就在内部寻找是否有空闲的线程，如果有，则将任务交给某个空闲的线程。</p>
+<p>2.一个线程同时只能执行一个任务，但可以同时向一个线程池提交多个任务。<br>
+线程池就是管理线程的池子，当有任务要处理时，不用频繁创建新线程，而是从池子里拿个线程出来处理。当任务执行完，线程并不会被销毁，而是再等待下一个任务。因此可以节省资源，提高响应速度。</p>
+<!-- more -->
+<h2 id="核心线程与非核心线程">核心线程与非核心线程</h2>
+<p>线程池新建线程的时候，如果当前线程总数小于线程池数量，则新建的是核心线程，如果超过线程池，则新建的是非核心线程</p>
+<!-- more -->
+<h2 id="阻塞队列">阻塞队列</h2>
+<p>WorkQueue</p>
+<h2 id="空闲存活时间">空闲存活时间</h2>
+<p>核心线程默认情况下会一直存活在线程池中，即使这个核心线程处于闲置状态。如果指定线程池允许的线程时间，那么核心线程处于闲置状态的话，超过一定时间（自己设置的时间），就会被销毁掉。</p>
+<!-- more -->
+<h2 id="饱和策略">饱和策略</h2>
+<p>线城池的饱和策略事件，主要有四种类型：</p>
+<ul>
+<li>AbortPolicy（抛出一个异常，默认的）</li>
+<li>DiscardPolicy（新提交的任务直接被抛弃）</li>
+<li>DiscardOldestPolicy（丢弃队列里最老的任务，将当前这个任务继续提交给线程池</li>
+<li>CallerRunsPolicy（交给线程池调用所在的线程进行处理，即将某些任务回退到调用者）</li>
+</ul>
+<!-- more -->
+<h2 id="流程图">流程图</h2>
+<figure data-type="image" tabindex="1"><img src="https://cutestalpaca.github.io/post-images/1605690233971.png" alt="" loading="lazy"></figure>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Docker学习笔记]]></title>
         <id>https://cutestalpaca.github.io/post/docker-xue-xi-bi-ji/</id>
