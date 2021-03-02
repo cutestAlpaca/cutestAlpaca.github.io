@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://cutestalpaca.github.io</id>
-    <title>alpaca的小站</title>
-    <updated>2021-03-02T09:00:35.656Z</updated>
+    <title>Alpaca的小站</title>
+    <updated>2021-03-02T09:10:17.710Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://cutestalpaca.github.io"/>
     <link rel="self" href="https://cutestalpaca.github.io/atom.xml"/>
     <subtitle>温故而知新</subtitle>
     <logo>https://cutestalpaca.github.io/images/avatar.png</logo>
     <icon>https://cutestalpaca.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2021, alpaca的小站</rights>
+    <rights>All rights reserved 2021, Alpaca的小站</rights>
     <entry>
         <title type="html"><![CDATA[线程池]]></title>
         <id>https://cutestalpaca.github.io/post/xian-cheng-chi/</id>
