@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://cutestalpaca.github.io</id>
     <title>Alpaca的小站</title>
-    <updated>2021-03-02T09:15:31.203Z</updated>
+    <updated>2021-03-04T04:56:08.023Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://cutestalpaca.github.io"/>
     <link rel="self" href="https://cutestalpaca.github.io/atom.xml"/>
@@ -10,6 +10,24 @@
     <logo>https://cutestalpaca.github.io/images/avatar.png</logo>
     <icon>https://cutestalpaca.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, Alpaca的小站</rights>
+    <entry>
+        <title type="html"><![CDATA[ubuntu 平台下的小工具]]></title>
+        <id>https://cutestalpaca.github.io/post/ubuntu-ping-tai-xia-de-xiao-gong-ju/</id>
+        <link href="https://cutestalpaca.github.io/post/ubuntu-ping-tai-xia-de-xiao-gong-ju/">
+        </link>
+        <updated>2021-03-04T04:52:31.000Z</updated>
+        <content type="html"><![CDATA[<!-- more -->
+<h3 id="1实时显示系统信息cpu-mem-net">1.实时显示系统信息（cpu mem net）</h3>
+<p>1、添加源</p>
+<p>sudo add-apt-repository ppa:fossfreedom/indicator-sysmonitor</p>
+<p>2、更新源</p>
+<p>sudo apt-get update</p>
+<p>3、安装sysmonitior</p>
+<p>sudo apt-get install indicator-sysmonitor</p>
+<p>终端执行或直接打开：</p>
+<p>indicator-sysmonitor &amp;</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[线程池]]></title>
         <id>https://cutestalpaca.github.io/post/xian-cheng-chi/</id>
