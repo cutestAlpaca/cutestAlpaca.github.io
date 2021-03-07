@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://cutestalpaca.github.io</id>
     <title>Alpaca的小站</title>
-    <updated>2021-03-06T12:00:19.870Z</updated>
+    <updated>2021-03-07T10:52:42.237Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://cutestalpaca.github.io"/>
     <link rel="self" href="https://cutestalpaca.github.io/atom.xml"/>
@@ -28,7 +28,12 @@
 <p>indicator-sysmonitor &amp;</p>
 <!-- more -->
 <h2 id="2-ssh客户端">2. ssh客户端</h2>
-<p>http://www.hostbuf.com/</p>
+<p><a href="http://www.hostbuf.com/">FinalShell</a></p>
+<!-- more -->
+<h2 id="3-代理客户端">3. 代理客户端</h2>
+<p><a href="https://qv2ray.net/">qv2ray</a></p>
+<!-- more -->
+<p>##4.</p>
 ]]></content>
     </entry>
     <entry>
