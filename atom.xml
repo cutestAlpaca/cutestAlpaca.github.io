@@ -1,0 +1,618 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://cutestalpaca.github.io</id>
+    <title>Alpaca的小站</title>
+    <updated>2024-02-24T04:07:29.557Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://cutestalpaca.github.io"/>
+    <link rel="self" href="https://cutestalpaca.github.io/atom.xml"/>
+    <subtitle>温故而知新</subtitle>
+    <logo>https://cutestalpaca.github.io/images/avatar.png</logo>
+    <icon>https://cutestalpaca.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2024, Alpaca的小站</rights>
+    <entry>
+        <title type="html"><![CDATA[mac OS使用brew安装node版本管理器-nvm]]></title>
+        <id>https://cutestalpaca.github.io/post/mac-os-shi-yong-brew-an-zhuang-node-ban-ben-guan-li-qi-nvm/</id>
+        <link href="https://cutestalpaca.github.io/post/mac-os-shi-yong-brew-an-zhuang-node-ban-ben-guan-li-qi-nvm/">
+        </link>
+        <updated>2024-02-24T03:47:13.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="一卸载node">一.卸载node</h2>
+<p>需要先卸载本地已安装的node，通过 node -v进行检查判断</p>
+<p>依次执行如下卸载命令</p>
+<pre><code class="language-shell">sudo npm uninstall npm -g
+sudo rm -rf /usr/local/lib/node /usr/local/lib/node_modules /var/db/receipts/org.nodejs.*
+sudo rm -rf /usr/local/include/node /Users/$USER/.npm
+sudo rm /usr/local/bin/node
+sudo rm /usr/local/share/man/man1/node.1
+sudo rm /usr/local/lib/dtrace/node.d
+</code></pre>
+<h2 id="二-安装nvm">二. 安装nvm</h2>
+<ol>
+<li>使用 brew 安装，更新Homebrew并安装</li>
+</ol>
+<pre><code class="language-shell">    brew update
+    brew install nvm
+</code></pre>
+<ul>
+<li>执行 brew install nvm 后会出现类似一下的内容<br>
+<img src="https://s11.ax1x.com/2024/02/24/pFU6HvF.png" alt="" loading="lazy"></li>
+</ul>
+<ol start="2">
+<li>根据提示，创建.nvm目录</li>
+</ol>
+<pre><code class="language-shell">   brew update
+   brew install nvm
+</code></pre>
+<ol start="3">
+<li>编辑~/.zshrc配置文件</li>
+</ol>
+<pre><code class="language-shell">   mkdir ~/.nvm
+</code></pre>
+<ol start="4">
+<li>查看配置是否生效</li>
+</ol>
+<pre><code class="language-shell">   echo $NVM_DIR
+</code></pre>
+<h2 id="三-安装-nodejs">三. 安装 node.js</h2>
+<p>查看node版本命令nvm ls-remote</p>
+<p>安装 LTS 版本，例如nvm install 18、nvm install 19、nvm install 20</p>
+<p>可通过nvm ls 查看<br>
+切换默认版本nvm use 20<br>
+删除具体的node版本nvm uninstall 20</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[解决npm代理 版本管理和某些模块无法下载的问题]]></title>
+        <id>https://cutestalpaca.github.io/post/jie-jue-npm-ban-ben-guan-li-he-mou-xie-mo-kuai-wu-fa-xia-zai-de-wen-ti/</id>
+        <link href="https://cutestalpaca.github.io/post/jie-jue-npm-ban-ben-guan-li-he-mou-xie-mo-kuai-wu-fa-xia-zai-de-wen-ti/">
+        </link>
+        <updated>2024-01-30T11:40:02.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="版本管理使用nvm">版本管理使用nvm</h2>
+<h2 id="代理设置">代理设置</h2>
+<pre><code class="language-bash">npm config set proxy=http://127.0.0.1:8087
+npm config set https-proxy http://127.0.0.1:8087
+
+// 需要用户名和密码
+npm config set proxy http://username:password@server:port
+npm confit set https-proxy http://username:password@server:port
+
+// 取消代理
+npm config delete proxy
+npm config delete https-proxy
+</code></pre>
+<h2 id="npm-配置和安装设置">npm 配置和安装设置</h2>
+<h3 id="1-查看镜像源">1. 查看镜像源</h3>
+<pre><code class="language-bash">npm get registry
+</code></pre>
+<h3 id="2-切换官方源">2. 切换官方源</h3>
+<pre><code class="language-bash">npm config set registry http://www.npmjs.org
+</code></pre>
+<h3 id="3-切换淘宝源">3. 切换淘宝源</h3>
+<pre><code class="language-bash">npm config set registry http://registry.npm.taobao.org
+</code></pre>
+<h3 id="4-命令行临时使用指定镜像淘宝">4. 命令行临时使用指定镜像（淘宝)</h3>
+<pre><code class="language-bash">npm --registry https://registry.npm.taobao.org install xxxxx
+</code></pre>
+<h3 id="5-命令行永久更改使用指定镜像淘宝">5. 命令行永久更改使用指定镜像（淘宝）</h3>
+<pre><code class="language-bash">npm config set registry https://registry.npm.taobao.org
+</code></pre>
+<pre><code class="language-bash">npm config set strict-ssl false // SSL错误(关闭SSL 证书校验)
+
+npm config get registry // 查看当前源
+npm config set registry https://registry.npmmirror.com/  // 设置淘宝源(已更新)
+npm config set registry https://registry.npmjs.org/  // 设置官方源
+
+npm config set sass_binary_site https://registry.npmmirror.com/mirrors/node-sass/
+npm config set chromedriver_cdnurl https://cdn.npm.taobao.org/dist/chromedriver
+npm config set electron_mirror https://registry.npmmirror.com/mirrors/electron/
+
+yarn config set chromedriver_cdnurl https://cdn.npm.taobao.org/dist/chromedriver
+yarn config set electron_mirror https://registry.npmmirror.com/mirrors/electron/
+yarn config set registry https://registry.npmmirror.com//
+yarn config set registry https://registry.yarnpkg.com
+yarn config set sass_binary_site https://registry.npmmirror.com/mirrors/node-sass/
+yarn config set phantomjs_cdnurl http://cnpmjs.org/downloads
+yarn config set sqlite3_binary_host_mirror https://foxgis.oss-cn-shanghai.aliyuncs.com/
+yarn config set profiler_binary_host_mirror https://registry.npmmirror.com/mirrors/node-inspector/
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[mac 版本charles安装报错-Charles cannot configure your proxy settings while it is on a read-only volume.]]></title>
+        <id>https://cutestalpaca.github.io/post/mac-ban-ben-charles-an-zhuang-bao-cuo-charles-cannot-configure-your-proxy-settings-while-it-is-on-a-read-only-volume/</id>
+        <link href="https://cutestalpaca.github.io/post/mac-ban-ben-charles-an-zhuang-bao-cuo-charles-cannot-configure-your-proxy-settings-while-it-is-on-a-read-only-volume/">
+        </link>
+        <updated>2023-09-15T08:54:42.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="mac-版本charles安装报错-charles-cannot-configure-your-proxy-settings-while-it-is-on-a-read-only-volume">mac 版本charles安装报错-Charles cannot configure your proxy settings while it is on a read-only volume.</h3>
+<figure data-type="image" tabindex="1"><img src="https://cutestalpaca.github.io/post-images/1694768108667.png" alt="" loading="lazy"></figure>
+<h3 id="错误信息">错误信息：</h3>
+<pre><code>Charles cannot configure your proxy settings while it is on a read-only volume. Perhaps you are running Charles from the disk image? If so, please copy Charles to the Applications folder and run it again. Otherwise please ensure that Charles is writable by the current user and try again.
+</code></pre>
+<h3 id="解决方案">解决方案：</h3>
+<pre><code>sudo chown -R root &quot;/Applications/Charles.app/Contents/Resources&quot;
+sudo chmod -R u+s &quot;/Applications/Charles.app/Contents/Resources&quot;
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[接口文档]]></title>
+        <id>https://cutestalpaca.github.io/post/jie-kou-wen-dang/</id>
+        <link href="https://cutestalpaca.github.io/post/jie-kou-wen-dang/">
+        </link>
+        <updated>2023-09-15T01:56:41.000Z</updated>
+        <content type="html"><![CDATA[<p>项目使用 Swagger 实现 RESTful API 的接口文档，提供两种解决方案：</p>
+<p>*【推荐】 Apifox (opens new window)：强大的 API 工具，支持 API 文档、API 调试、API Mock、API 自动化测试</p>
+<p>Knife4j：简易的 API 工具，仅支持 API 文档、API 调试<br>
+为什么选择 Swagger 呢？</p>
+<p>Swagger 通过 Java 注解实现 API 接口文档的编写。相比使用 Java 注释的方式，注解提供更加规范的接口定义方式，开发体验更好。</p>
+<p>如果你没有学习 Swagger，可以阅读 《芋道 Spring Boot API 接口文档 Swagger 入门 》 (opens new window)文章。</p>
+<p>#1. Apifox 使用<br>
+本小节，我们来将项目中的 API 接口，一键导入到 Apifox 中，并使用它发起一次 API 的调用。</p>
+<p>#1.1 下载工具<br>
+点击 Apifox (opens new window)首页，下载对应的 Apifox 桌面版。如下图所示：<br>
+<img src="https://doc.iocoder.cn/img/%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3/01.png" alt="" loading="lazy"></p>
+<p>为什么要下载 Apifox 桌面版？</p>
+<p>艿艿已经卸载 Postman，使用 Apifox 进行替代。国产软件，yyds 永远滴神！</p>
+<p>国内很多互联网公司，包括百度、阿里、腾讯、字节跳动等等在内，都在使用 Apifox 作为 API 工具。</p>
+<p>Apifox 下载</p>
+<p>解压后，双击进行安装即可。黑色界面，非常酷炫。</p>
+<p>Apifox 界面</p>
+<p>#1.2 API 导入<br>
+① 先点击「示例项目」，再点击「+」按钮，选择「导入」选项。</p>
+<p>Apifox 界面 —— 导入</p>
+<p>② 先选择「URL 导入」按钮，填写 Swagger 数据 URL 为 http://127.0.0.1:48080/v3/api-docs。</p>
+<p>Apifox 界面 —— Swagger</p>
+<p>③ 先点击「提交」按钮，再点击「确认导入」按钮，完成 API 接口的导入。</p>
+<p>Apifox 界面 —— Swagger</p>
+<p>④ 导入完成后，点击「接口管理」按钮，可以查看到 API 列表。</p>
+<p>Apifox 界面 —— 接口管理</p>
+<p>#1.3 API 调试<br>
+① 先点击右上角「请选择环境」，再点击「管理环境」选项，填写测试环境的地址为 http://127.0.0.1:48080，并进行保存。</p>
+<p>Apifox 界面 —— 管理环境</p>
+<p>② 点击「管理后台 —— 认证」的「使用账号密码登录」接口，查看该 API 接口的定义。</p>
+<p>Apifox 界面 —— 认证</p>
+<p>③ 点击「运行」按钮，填写 Headers 的 tenant-id 为 1，再点击 Body 的「自动生成」按钮，最后点击「发送」按钮。</p>
+<p>Apifox 界面 —— 认证</p>
+<p>注意，登录接口不要填写 socialType、socialCode、socialState 这三个参数，它们是三方登录的参数。一定要去掉，不然会报错噢！</p>
+<p>#1.4 常见问题<br>
+问题 ①：分页 GET 请求时，如果有 createTime 这种时间类型的数组参数，会报错。如下图所示：</p>
+<p>Apifox 常见问题 1</p>
+<p>答：把 createTime 左右两边的 [] 去掉，即可解决。</p>
+<p>#2. Knife4j 使用<br>
+浏览器访问 http://127.0.0.1:48080/doc.html (opens new window)地址，使用 Knife4j 查看 API 接口文档。</p>
+<p>Knife4j 界面</p>
+<p>① 点击任意一个接口，进行接口的调用测试。这里，使用「管理后台 - 用户个中心」的“获得登录用户信息”举例子。</p>
+<p>② 点击左侧「调试」按钮，并将请求头部的 header-id 和 Authorization 勾选上。</p>
+<p>其中，header-id 为租户编号，Authorization 的 &quot;Bearer test&quot; 后面为用户编号（模拟哪个用户操作）。</p>
+<p>如果不勾选，会出现 &quot;请求的租户标识未传递，请进行排查&quot; 或 &quot;账号未登录&quot; 错误。</p>
+<p>③ 点击「发送」按钮，即可发起一次 API 的调用。</p>
+<p>Knife4j 调试</p>
+<p>#3. Swagger 技术组件<br>
+① 在 yudao-spring-boot-starter-web (opens new window)技术组件的 swagger (opens new window)包，实现了对 Swagger 的封装。</p>
+<p>② 如果想要禁用 Swagger 功能，可通过 springdoc.api-docs.enable 配置项为 false。一般情况下，建议 prod 生产环境进行禁用，避免发生安全问题。</p>
+<p>Swagger 关闭</p>
+<p>上次更新: 2023/09/11, 17:07:33</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[简介]]></title>
+        <id>https://cutestalpaca.github.io/post/jian-jie/</id>
+        <link href="https://cutestalpaca.github.io/post/jian-jie/">
+        </link>
+        <updated>2023-09-15T01:53:56.000Z</updated>
+        <content type="html"><![CDATA[<p>简介<br>
+yudao-vue-pro (opens new window)，RuoYi-Vue 全新 Pro 版本，优化重构所有功能。</p>
+<p>基于 Spring Boot + MyBatis Plus + Vue &amp; Element 实现的后台管理系统 + UniApp 微信小程序，支持 RBAC 动态权限、数据权限、SaaS 多租户、Flowable 工作流、三方登录、支付、短信、商城等功能。</p>
+<p>Gitee star (opens new window)GitHub stars(opens new window)</p>
+<p>😆 为开源继绝学，我辈义不容辞！</p>
+<p>2017 年，艿艿创建「芋道源码」公众号，帮助了 20w+ 工程师学习优秀框架的源码。</p>
+<p>2019 年，看了 Gitee 和 Github 非常多的业务开源项目，无法到达代码整洁、架构整洁。</p>
+<p>于是，艿艿利用休息时间，每天肝到晚上 1 点多，如此便有了芋道管理后台 + 微信小程序。</p>
+<p>#🐴 严肃声明<br>
+现在、未来都不会有商业版本，所有代码全部开源！</p>
+<p>「我喜欢写代码，乐此不疲」<br>
+「我喜欢做开源，以此为乐」</p>
+<p>我 🐶 在上海艰苦奋斗，早中晚在 top3 大厂认真搬砖，夜里为开源做贡献。</p>
+<p>如果这个项目让你有所收获，记得 Star 关注哦，这对我是非常不错的鼓励与支持。</p>
+<p>#🐳 项目关系<br>
+架构演进</p>
+<p>三个项目的功能对比，可见社区共同整理的 国产开源项目对比 (opens new window)表格。</p>
+<p>#后端项目<br>
+项目	Star	简介<br>
+ruoyi-vue-pro(opens new window)	Gitee star (opens new window)GitHub stars(opens new window)	基于 Spring Boot 多模块架构<br>
+yudao-cloud(opens new window)	Gitee star (opens new window)GitHub stars(opens new window)	基于 Spring Cloud 微服务架构<br>
+Spring-Boot-Labs(opens new window)	Gitee star (opens new window)GitHub stars(opens new window)	系统学习 Spring Boot &amp; Cloud 专栏</p>
+<p>#前端项目<br>
+项目	Star	简介<br>
+yudao-ui-admin-vue3(opens new window)	Gitee star (opens new window)GitHub stars(opens new window)	基于 Vue3 + element-plus 实现的管理后台<br>
+yudao-ui-admin(opens new window)	Gitee star (opens new window)GitHub stars(opens new window)	基于 Vue2 + element-ui 实现的管理后台<br>
+yudao-ui-admin-uniapp(opens new window)	Gitee star (opens new window)GitHub stars(opens new window)	基于 uni-app + uni-ui 实现的管理后台的小程序<br>
+yudao-ui-go-view(opens new window)	Gitee star (opens new window)GitHub stars(opens new window)	基于 Vue3 + naive-ui 实现的大屏报表<br>
+yudao-mall-uniapp(opens new window)	Gitee star (opens new window)GitHub stars(opens new window)	基于 uni-app 实现的商城小程序</p>
+<p>#🐶 在线体验<br>
+演示地址【Vue3 + element-plus】：http://dashboard-vue3.yudao.iocoder.cn(opens new window)<br>
+演示地址【Vue3 + vben(ant-design-vue)】：http://dashboard-vben.yudao.iocoder.cn(opens new window)<br>
+演示地址【Vue2 + element-ui】：http://dashboard.yudao.iocoder.cn(opens new window)<br>
+如果你要搭建本地环境，可参考如下文档：</p>
+<p>《开发指南 —— 快速启动（适合“后端”工程师）》<br>
+《开发指南 —— 快速启动（适合“前端”工程师）》<br>
+#📚 国内顶级开源项目对比<br>
+社区整理，欢迎补充！传送门</p>
+<p>上次更新: 2023/09/11, 17:07:33</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[关于macOS的个人使用记录]]></title>
+        <id>https://cutestalpaca.github.io/post/guan-yu-macos-de-ge-ren-shi-yong-xin-de/</id>
+        <link href="https://cutestalpaca.github.io/post/guan-yu-macos-de-ge-ren-shi-yong-xin-de/">
+        </link>
+        <updated>2023-02-11T14:12:56.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="关于今天使用mac时遇到以前经常出现或常见的问题做个记录主要是百度搜索引擎效率太低希望能快速解决某些问题-避免浪费太多的时间">关于今天使用Mac时,遇到以前经常出现或常见的问题做个记录(主要是百度搜索引擎效率太低),希望能快速解决某些问题, 避免浪费太多的时间.</h2>
+<h3 id="一-mac如何允许安装任何来源的软件">一. MAC如何允许安装任何来源的软件</h3>
+<pre><code>sudo spctl --master-disable
+</code></pre>
+<h3 id="二-关于ps使用-本周新安装的ps-安装插件的时候各种错误-在此记录一下常见的错误">二. 关于PS使用: 本周新安装的ps, 安装插件的时候各种错误, 在此记录一下常见的错误</h3>
+<h4 id="1-xxx-因为它未经正确签署">1. xxx 因为它未经正确签署 <img src="https://i0.hdslb.com/bfs/article/f5c278c3ba7e5e812224b2fbc701c2caf41175c3.jpg@942w_536h_progressive.webp" alt="" loading="lazy"></h4>
+<h4 id="各个photoshop版本命令行如下">各个Photoshop版本命令行如下：</h4>
+<pre><code>CC 2014：defaults write com.adobe.CSXS.5 PlayerDebugMode 1
+CC 2015：defaults write com.adobe.CSXS.6 PlayerDebugMode 1
+CC 2015.5：defaults write com.adobe.CSXS.7 PlayerDebugMode 1
+CC 2017：defaults write com.adobe.CSXS.7 PlayerDebugMode 1
+CC 2018：defaults write com.adobe.CSXS.8 PlayerDebugMode 1
+CC 2019：defaults write com.adobe.CSXS.9 PlayerDebugMode 1
+PS 2020：defaults write com.adobe.CSXS.9 PlayerDebugMode 1
+PS 2021：defaults write com.adobe.CSXS.10 PlayerDebugMode 1
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[开发环境配置]]></title>
+        <id>https://cutestalpaca.github.io/post/kai-fa-huan-jing-pei-zhi/</id>
+        <link href="https://cutestalpaca.github.io/post/kai-fa-huan-jing-pei-zhi/">
+        </link>
+        <updated>2022-09-01T03:55:08.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="开发环境">开发环境</h2>
+<h3 id="go">GO</h3>
+<pre><code># go 开发环境
+export GOROOT=/usr/local/go
+export GOPATH=~/gopath
+export PATH=$PATH:$GOROOT/bin:$PATH:$GOPATH/BIN
+
+# go goproxy.cn
+export GO111MODULE=on
+export GOPROXY=https://goproxy.cn
+</code></pre>
+<h3 id="终端代理">终端代理</h3>
+<pre><code># 代理
+alias onproxy='export http_proxy=http://127.0.0.1:8889;export https_proxy=http://127.0.0.1:8889;'
+alias unproxy='unset all_proxy'
+</code></pre>
+<h3 id="brew">brew</h3>
+<ul>
+<li>
+<p>brew 国内镜像源</p>
+</li>
+<li>
+<p>自动脚本 常规安装脚本（推荐 完全体 几分钟安装完成）：</p>
+<pre><code>/bin/zsh -c &quot;$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)&quot;
+</code></pre>
+</li>
+<li>
+<p>卸载脚本：</p>
+<pre><code>/bin/zsh -c &quot;$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/HomebrewUninstall.sh)&quot;
+</code></pre>
+</li>
+<li>
+<p>常见错误去下方地址查看</p>
+<pre><code>https://gitee.com/cunkai/HomebrewCN/blob/master/error.md
+</code></pre>
+</li>
+</ul>
+<h3 id="oh-my-zsh">oh my zsh</h3>
+<ul>
+<li>
+<p>官网：</p>
+<pre><code>https://ohmyz.sh/#install
+</code></pre>
+</li>
+<li>
+<p>主题</p>
+<pre><code>cloud
+</code></pre>
+</li>
+<li>
+<p>插件</p>
+<pre><code>git
+zsh-autosuggestions
+zsh-syntax-highlighting
+autojump
+</code></pre>
+</li>
+</ul>
+<h3 id="git">git</h3>
+<ol>
+<li>配置账户和邮箱<pre><code>git config --global  user.name &quot;你的账户&quot;
+git config --global user.email &quot;你的邮箱&quot;
+</code></pre>
+</li>
+<li>生成秘钥<pre><code>ssh-keygen -t rsa -C &quot;你的邮箱&quot;
+</code></pre>
+</li>
+</ol>
+<h2 id="ide配置">IDE配置</h2>
+<h3 id="goland">Goland</h3>
+<h4 id="插件">插件</h4>
+<pre><code>CodeGlance Pro
+Git Commit Template
+GitToolBox
+Gopher
+Rainbow Brackets
+(关闭没必要的插件)
+</code></pre>
+<h4 id="设置">设置</h4>
+<ol>
+<li>关闭自动更新</li>
+<li>自动格式化</li>
+<li>gopath</li>
+<li>CodeStyle</li>
+</ol>
+<h4 id="neovim">NeoVim</h4>
+<p>nvim golang 开发环境配置</p>
+<h3 id="参考资料">参考资料</h3>
+<p>[1] https://mp.weixin.qq.com/s/K6Cl2Gm83FYBZRroabjeMw<br>
+[2] https://www.jianshu.com/p/e3d07566c002</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Golang函数的不定参数解决方案之一]]></title>
+        <id>https://cutestalpaca.github.io/post/golang-han-shu-de-bu-ding-can-shu-jie-jue-fang-an-zhi-yi/</id>
+        <link href="https://cutestalpaca.github.io/post/golang-han-shu-de-bu-ding-can-shu-jie-jue-fang-an-zhi-yi/">
+        </link>
+        <updated>2022-06-23T11:35:51.000Z</updated>
+        <content type="html"><![CDATA[<h4 id="比如">比如</h4>
+<pre><code>// NewFriend 寻找志同道合朋友
+func NewFriend(sex int, age int, hobby string) (string, error) {
+ 
+ // 逻辑处理 ...
+
+ return &quot;&quot;, nil
+}
+</code></pre>
+<p>NewFriend()，方法中参数<strong>sex</strong> 和 <strong>age</strong> 为非必传参数，这时方法如何怎么写？</p>
+<h4 id="一">一：</h4>
+<pre><code>// Sex 性别
+type Sex int
+
+// Age 年龄
+type Age int
+
+// NewFriend 寻找志同道合的朋友
+func NewFriend(hobby string, args ...interface{}) (string, error) {
+ for _, arg := range args {
+  switch arg.(type) {
+  case Sex:
+   fmt.Println(arg, &quot;is sex&quot;)
+  case Age:
+   fmt.Println(arg, &quot;is age&quot;)
+  default:
+   fmt.Println(&quot;未知的类型&quot;)
+  }
+ }
+ return &quot;&quot;, nil
+}
+</code></pre>
+<p>有没有更好的方案呢？传递结构体也是个不错的方法！</p>
+<pre><code>// Option custom setup config
+type Option func(*option)
+
+// option 参数配置项
+type option struct {
+ sex int
+ age int
+}
+
+// NewFriend 寻找志同道合的朋友
+func NewFriend(hobby string, opts ...Option) (string, error) {
+ opt := new(option)
+ for _, f := range opts {
+  f(opt)
+ }
+
+ fmt.Println(opt.sex, &quot;is sex&quot;)
+ fmt.Println(opt.age, &quot;is age&quot;)
+
+ return &quot;&quot;, nil
+}
+
+// WithSex sex 1=female 2=male
+func WithSex(sex int) Option {
+ return func(opt *option) {
+  opt.sex = sex
+ }
+}
+
+// WithAge age
+func WithAge(age int) Option {
+ return func(opt *option) {
+  opt.age = age
+ }
+}
+</code></pre>
+<p><strong>使用的时候这样调用：</strong></p>
+<pre><code>friends, err := friend.NewFriend(
+ &quot;看书&quot;,
+ friend.WithAge(30),
+ friend.WithSex(1),
+)
+
+if err != nil {
+ fmt.Println(friends)
+}
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[MySQL如何实现事务的ACID]]></title>
+        <id>https://cutestalpaca.github.io/post/mysql-ru-he-shi-xian-shi-wu-de-acid/</id>
+        <link href="https://cutestalpaca.github.io/post/mysql-ru-he-shi-xian-shi-wu-de-acid/">
+        </link>
+        <updated>2022-06-20T14:41:10.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="总结mysql的innodb引擎是如何实现事务的如何实现acid这几个特性的">总结MySQL的InnoDB引擎是如何实现事务的（如何实现acid这几个特性的）</h2>
+<h3 id="事务的四大特性acid">事务的四大特性acid</h3>
+<p>  事务就是一组原子性的SQL操作或者一个独立的工作单元，事务内的语句要么全部执行成功，要么全部执行失败。<br>
+事务是指对系统进行的一组操作，为了保证系统的完整性，事务具有ACID特性，具体如下：</p>
+<h3 id="原子性atomic">原子性（Atomic）</h3>
+<p>  一个事务包含多个操作，这些操作要么全部执行，要么全都不执行；<br>
+  实现事务的原子性，是基于日志的Redo/Undo机制（回滚日志）；Undo log能够保证在事务回滚时，能够撤销所有已经执行成功的sql。</p>
+<h3 id="一致性consistency">一致性（Consistency）</h3>
+<p>  一致性是指在事务执行前后，数据的一致性，事务前后数据完整性没有破坏，并且都是合法的数据状态。<br>
+  一致性是指事务使得系统从一个一致的状态转换到另一个一致状态。 事务的一致性决定了一个系统设计和实现的复杂度，也导致了事务的不同隔离级别。</p>
+<ul>
+<li>其中一致性的指标有：<br>
+  索引的完整（唯一索引，不重复等），数据列的完成（字段类型，长度，大小符合要求），外键约束等。</li>
+</ul>
+<h3 id="隔离性isolation">隔离性（Isolation）</h3>
+<p>  隔离性侧重指事务之间相互隔离，不受影响，这个与事务设置的隔离级别有密切的关系。</p>
+<h3 id="持久性durability">持久性（Durability）</h3>
+<p>  事务提交后，对系统的影响是永久的，接下来的其他操作和异常故障不应该对它有任何影响。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[gRPC数据交互模式]]></title>
+        <id>https://cutestalpaca.github.io/post/grpc-shu-ju-jiao-hu-mo-shi/</id>
+        <link href="https://cutestalpaca.github.io/post/grpc-shu-ju-jiao-hu-mo-shi/">
+        </link>
+        <updated>2022-06-16T13:53:40.000Z</updated>
+        <content type="html"><![CDATA[<ul>
+<li>简单模式（Simple RPC），客户端发起请求并等待服务端响应；</li>
+<li>服务端流式 RPC（Server-side streaming RPC），客户端发起一个请求到服务端，服务端返回一段连续的数据流响应；</li>
+<li>客户端流式 RPC（Client-side streaming RPC），与服务端流式相反，客户端流式是客户端不断地向服务端发送数据流，最后由服务端返回一个响应；</li>
+<li>双向流式 RPC（Bidirectional streaming RPC），客户端和服务端可同时向对方发送数据流，同时也可以接收数据；</li>
+</ul>
+<h3 id="一简单模式">一：简单模式</h3>
+<h4 id="新建并编译-proto-文件">新建并编译 proto 文件</h4>
+<p><font color=gray size=2>新建文件 simple.proto</font></p>
+<pre><code>syntax = &quot;proto3&quot;;
+
+package proto;
+option go_package = &quot;/pb&quot;;
+
+// 定义发送请求信息
+message SimpleRequest{
+  // 参数类型 参数名称 标识号
+  string data = 1;
+}
+
+// 定义响应信息
+message SimpleResponse{
+  int32 code = 1;
+  string value = 2;
+}
+
+// 定义我们的服务(可以定义多个服务，每个服务可以定义多个接口)
+service Simple{
+  rpc GetSimpleInfo(SimpleRequest) returns (SimpleResponse){};
+}
+</code></pre>
+<p>进入项目的目录，使用如下命令编译文件（.proto文件放在proto文件夹）</p>
+<pre><code>protoc --go_out=plugins=grpc:. ./proto/simple.proto
+</code></pre>
+<p>执行完成之后会在项目目录生成pb文件下，文件夹内有 simple.pb.go 文件</p>
+<h4 id="创建-server-端">创建 server 端</h4>
+<pre><code>package main
+
+import (
+	&quot;context&quot;
+	pb &quot;gRPCModel/pb&quot;
+	&quot;google.golang.org/grpc&quot;
+	&quot;log&quot;
+	&quot;net&quot;
+)
+
+const (
+	Address string = &quot;:8000&quot;
+	Network string = &quot;tcp&quot;
+)
+
+type SimpleService struct {
+}
+
+func (s *SimpleService) GetSimpleInfo(ctx context.Context, req *pb.SimpleRequest) (*pb.SimpleResponse, error) {
+	data := req.Data
+	log.Println(&quot;get form client:&quot;, data)
+	resp := &amp;pb.SimpleResponse{
+		Code:  200,
+		Value: &quot;grpc&quot;,
+	}
+	return resp, nil
+}
+
+func main() {
+	// 1.监听端口
+	listener, err := net.Listen(Network, Address)
+	if err != nil {
+		log.Fatalf(&quot;net.listen err: %v&quot;, err)
+	}
+
+	log.Println(Address, &quot; net listening...&quot;)
+
+	// 2.实例化gRPC服务端
+	grpcServer := grpc.NewServer()
+
+	// 3.注册我们实现的服务 SimpleService
+	pb.RegisterSimpleServer(grpcServer, &amp;SimpleService{})
+
+	// 4.启动gRPC服务端
+	err = grpcServer.Serve(listener)
+	if err != nil {
+		log.Fatalf(&quot;grpc server err: %v&quot;,err)
+	}
+}
+</code></pre>
+<h4 id="创建-client-端">创建 client 端</h4>
+<pre><code>package main
+
+import (
+ &quot;context&quot;
+ pb &quot;go-grpc-example/1-simple_rpc/proto&quot;
+ &quot;google.golang.org/grpc&quot;
+ &quot;log&quot;
+)
+
+const (
+ Address string = &quot;:8000&quot;
+)
+
+func main() {
+ // 1.创建于gRPC服务端的连接
+ conn, err := grpc.Dial(Address, grpc.WithInsecure())
+ if err != nil {
+  log.Fatalf(&quot;dial conn err: %v&quot;, err)
+ }
+ defer conn.Close()
+
+ // 2.创建grpc客户端
+ client := pb.NewSimpleClient(conn)
+
+ // 3.调用服务端提供的服务
+ req := pb.SimpleRequest{
+  Data: &quot;Hello,Server&quot;,
+ }
+ resp, err := client.GetSimpleInfo(context.Background(), &amp;req)
+ if err != nil {
+  log.Fatalf(&quot;resp err: %v&quot;, err)
+ }
+ log.Printf(&quot;get from server,code: %v,value: %v&quot;, resp.Code, resp.Value)
+
+}
+</code></pre>
+<p>运行客户端：</p>
+<pre><code>go run client.go
+
+输出：
+get from server,code: 200,value: grpc
+</code></pre>
+<p>成功调用了服务端提供的方法并返回数据。</p>
+]]></content>
+    </entry>
+</feed>
