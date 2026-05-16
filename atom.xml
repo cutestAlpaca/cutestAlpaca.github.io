@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://cutestalpaca.github.io</id>
     <title>Alpaca的小站</title>
-    <updated>2024-02-24T04:07:29.557Z</updated>
+    <updated>2026-05-16T08:25:26.498858Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://cutestalpaca.github.io"/>
     <link rel="self" href="https://cutestalpaca.github.io/atom.xml"/>
@@ -10,6 +10,39 @@
     <logo>https://cutestalpaca.github.io/images/avatar.png</logo>
     <icon>https://cutestalpaca.github.io/favicon.ico</icon>
     <rights>All rights reserved 2024, Alpaca的小站</rights>
+    <entry>
+        <title type="html"><![CDATA[Codex详细使用教程]]></title>
+        <id>https://cutestalpaca.github.io/post/codex-xiang-xi-shi-yong-jiao-cheng/</id>
+        <link href="https://cutestalpaca.github.io/post/codex-xiang-xi-shi-yong-jiao-cheng/">
+        </link>
+        <updated>2026-05-16T08:25:26.498858Z</updated>
+        <content type="html"><![CDATA[<h2 id="一什么是codex">一、什么是Codex？</h2>
+<p>Codex 是一个强大的人工智能代码生成模型，通过自然语言理解并转化为代码。它可以帮助开发者快速编写代码、解释代码逻辑、编写测试用例以及解决编程问题。</p>
+<h2 id="二如何开始使用">二、如何开始使用？</h2>
+<ol>
+<li>
+<p><strong>明确意图</strong><br>
+在使用 Codex 时，请尽量用清晰、准确的自然语言描述你的需求。例如：“用 Python 写一个快速排序算法”。</p>
+</li>
+<li>
+<p><strong>提供上下文</strong><br>
+如果是在现有代码的基础上进行修改或添加功能，请提供足够的上下文信息，包括已有的函数、类、依赖库等。</p>
+</li>
+<li>
+<p><strong>逐步细化</strong><br>
+对于复杂的任务，可以将其分解为多个简单的步骤，逐步引导 Codex 完成。</p>
+</li>
+</ol>
+<h2 id="三使用技巧与最佳实践">三、使用技巧与最佳实践</h2>
+<ul>
+<li><strong>添加注释：</strong> 在代码中添加清晰的注释，不仅可以帮助你理解代码，还可以引导 Codex 更好地理解你的意图。</li>
+<li><strong>检查和测试：</strong> 虽然 Codex 生成的代码通常质量很高，但仍然需要进行仔细的检查和测试，以确保其符合你的预期并且没有错误。</li>
+<li><strong>学习和探索：</strong> 尝试使用不同的提示词和技巧，探索 Codex 的更多功能和潜力。</li>
+</ul>
+<h2 id="四总结">四、总结</h2>
+<p>Codex 是一个强大的编程助手，它可以显著提高你的开发效率。通过掌握正确的使用技巧，你将能够更好地利用它来解决各种编程挑战。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[mac OS使用brew安装node版本管理器-nvm]]></title>
         <id>https://cutestalpaca.github.io/post/mac-os-shi-yong-brew-an-zhuang-node-ban-ben-guan-li-qi-nvm/</id>
